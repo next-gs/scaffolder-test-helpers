@@ -1,0 +1,2 @@
+class Scaffolder::Test
+end
