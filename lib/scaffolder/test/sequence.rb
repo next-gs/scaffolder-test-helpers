@@ -20,7 +20,7 @@ module Scaffolder::Test
     def to_hash
       hash = {'source' => name}
       [:start,:stop,:reverse].each do |attribute|
-        hash[attribute.to_s] = send(attribute) if send(attribute)
+        hash[attribute.to_s] = @options[attribute] if @options[attribute]
       end
       {'sequence' => hash}
     end
