@@ -3,3 +3,7 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require 'rspec'
 require 'scaffolder/test/helpers'
+
+RSpec.configure do
+  include Scaffolder::Test::Helpers
+end

@@ -51,7 +51,7 @@ describe Scaffolder::Test::Helpers, "#generate_scaffold_files method" do
     before(:all) do
       entries = [Scaffolder::Test::Sequence.new(:name => 'c1',:sequence => 'ATG'),
                  Scaffolder::Test::Unresolved.new(:length => 5)]
-      @scaf_file, @seq_file = described_class.generate_scaffold_files(entries)
+      @scaf_file, @seq_file = generate_scaffold_files(entries)
     end
 
     it "should create the corresponding scaffold file" do
