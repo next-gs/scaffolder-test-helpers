@@ -2,6 +2,9 @@ require 'tempfile'
 require 'bio'
 require 'scaffolder'
 
+require 'scaffolder/test/sequence'
+require 'scaffolder/test/unresolved'
+
 module Scaffolder::Test
   module Helpers
 
