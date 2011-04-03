@@ -3,16 +3,26 @@ require 'scaffolder'
 module Scaffolder::Test
   class Sequence
 
-    attr_reader :name
-    attr_reader :sequence
+    def initialize(options = {})
+      @options = options
+    end
 
-    def initialize(opts = {})
-      @name     = opts[:name]
-      @sequence = opts[:sequence]
+    [:name,:sequence,:reverse,:start,:stop].each do |attribute|
+      define_method(attribute) do |*arg|
+        unless arg.first
+          return @options[attribute]
+        end
+        @options[attribute] = arg.first
+        return self
+      end
     end
 
     def to_hash
-      {'sequence' => {'source' => name}}
+      hash = {'source' => name}
+      [:start,:stop,:reverse].each do |attribute|
+        hash[attribute.to_s] = send(attribute) if send(attribute)
+      end
+      {'sequence' => hash}
     end
 
     def to_fasta
