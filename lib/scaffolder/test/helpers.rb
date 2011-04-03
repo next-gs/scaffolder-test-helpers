@@ -8,6 +8,10 @@ require 'scaffolder/test/unresolved'
 module Scaffolder::Test
   module Helpers
 
+    def self.generate_scaffold_files(entries)
+      [Tempfile.new('scaffold'),Tempfile.new('scaffold')]
+    end
+
     def write_sequence_file(entries,file = Tempfile.new("sequence").path)
       File.open(file,'w') do |tmp|
         make_sequence(entries).each do |entry|
