@@ -6,15 +6,19 @@ describe Scaffolder::Test::Helpers, "#generate_scaffold_files method" do
 
     before(:all) do
       entries = [Scaffolder::Test::Sequence.new(:name => 'c1',:sequence => 'ATG')]
-      @scaffold_file, @sequence_file = generate_scaffold_files(entries)
+      @scaf_file, @seq_file = described_class.generate_scaffold_files(entries)
     end
 
-    it "should create a scaffold file" do
-      File.exists?(@scaffold_file).should be_true
+    it "should create the corresponding scaffold file" do
+      File.exists?(@scaf_file).should be_true
+      scaffold = YAML.load(File.read(@scaf_file))
+      scaffold.should == [{'sequence' => {'source' => 'c1'}}]
     end
 
-    it "should create a sequence file" do
-      File.exists?(@sequence_file).should be_true
+    it "should create the corresponding sequence file" do
+      File.exists?(@seq_file).should be_true
+      sequence = File.read(@seq_file)
+      sequence.should == ">c1\nATG\n"
     end
 
   end
