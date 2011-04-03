@@ -3,6 +3,7 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'rspec'
 
 require 'scaffolder/test/sequence'
+require 'scaffolder/test/unresolved'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
