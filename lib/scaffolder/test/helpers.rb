@@ -22,7 +22,7 @@ module Scaffolder::Test
     def self.write_sequence_file(entries,file = Tempfile.new("sequence").path)
       File.open(file,'w') do |tmp|
         entries.each do |entry|
-          tmp.puts entry.to_fasta
+          tmp.puts(entry.to_fasta) if entry.respond_to? :to_fasta
         end
       end
       file
