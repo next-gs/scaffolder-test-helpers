@@ -5,7 +5,7 @@ describe Scaffolder::Test::Helpers, "#generate_scaffold_files method" do
   describe "pass an array with a single sequence" do
 
     before(:all) do
-      entries = [Scaffolder::Test::Sequence.new(:name => 'c1',:sequence => 'ATG')]
+      entries = [Sequence.new(:name => 'c1',:sequence => 'ATG')]
       @scaf_file, @seq_file = described_class.generate_scaffold_files(entries)
     end
 
@@ -26,8 +26,8 @@ describe Scaffolder::Test::Helpers, "#generate_scaffold_files method" do
   describe "pass an array with two sequences" do
 
     before(:all) do
-      entries = [Scaffolder::Test::Sequence.new(:name => 'c1',:sequence => 'ATG'),
-                 Scaffolder::Test::Sequence.new(:name => 'c2',:sequence => 'ATG')]
+      entries = [Sequence.new(:name => 'c1',:sequence => 'ATG'),
+                 Sequence.new(:name => 'c2',:sequence => 'ATG')]
       @scaf_file, @seq_file = described_class.generate_scaffold_files(entries)
     end
 
@@ -49,8 +49,8 @@ describe Scaffolder::Test::Helpers, "#generate_scaffold_files method" do
   describe "pass an array with a sequence and an unresolved region" do
 
     before(:all) do
-      entries = [Scaffolder::Test::Sequence.new(:name => 'c1',:sequence => 'ATG'),
-                 Scaffolder::Test::Unresolved.new(:length => 5)]
+      entries = [Sequence.new(:name => 'c1',:sequence => 'ATG'),
+                 Unresolved.new(:length => 5)]
       @scaf_file, @seq_file = generate_scaffold_files(entries)
     end
 

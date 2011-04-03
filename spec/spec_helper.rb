@@ -5,5 +5,6 @@ require 'rspec'
 require 'scaffolder/test/helpers'
 
 RSpec.configure do
+  include Scaffolder::Test
   include Scaffolder::Test::Helpers
 end
