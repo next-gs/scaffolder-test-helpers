@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{scaffolder-test-helpers}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michael Barton"]
-  s.date = %q{2011-01-04}
+  s.date = %q{2011-04-03}
   s.description = %q{Helper methods and cucumber steps for testing scaffolder.}
   s.email = %q{mail@michaelbarton.me.uk}
   s.extra_rdoc_files = [
@@ -18,16 +18,18 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".document",
-    ".rspec",
     "Gemfile",
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "lib/scaffolder/test/cucumber_steps.rb",
     "lib/scaffolder/test/helpers.rb",
+    "lib/scaffolder/test/sequence.rb",
+    "lib/scaffolder/test/unresolved.rb",
     "scaffolder-test-helpers.gemspec",
     "spec/scaffolder/test/helpers_spec.rb",
+    "spec/scaffolder/test/sequence_spec.rb",
+    "spec/scaffolder/test/unresolved_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/michaelbarton/scaffolder-test-helpers}
@@ -37,6 +39,8 @@ Gem::Specification.new do |s|
   s.summary = %q{Common methods for testing scaffolder.}
   s.test_files = [
     "spec/scaffolder/test/helpers_spec.rb",
+    "spec/scaffolder/test/sequence_spec.rb",
+    "spec/scaffolder/test/unresolved_spec.rb",
     "spec/spec_helper.rb"
   ]
 

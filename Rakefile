@@ -21,8 +21,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "scaffolder-test-helpers"
   gem.homepage = "http://github.com/michaelbarton/scaffolder-test-helpers"
   gem.license = "MIT"
-  gem.summary = %Q{Common methods for testing scaffolder.}
-  gem.description = %Q{Helper methods and cucumber steps for testing scaffolder.}
+  gem.summary = %Q{Methods and classes for testing scaffolder.}
+  gem.description = %Q{Useful Helper methods and classes for testing scaffolder.}
   gem.email = "mail@michaelbarton.me.uk"
   gem.authors = ["Michael Barton"]
 end
