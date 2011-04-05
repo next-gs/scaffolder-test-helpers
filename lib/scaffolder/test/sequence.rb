@@ -7,6 +7,11 @@ module Scaffolder::Test
       @options = options
     end
 
+    def initialize_copy(source)
+      super
+      @options = @options.dup
+    end
+
     [:name,:sequence,:reverse,:start,:stop].each do |attribute|
       define_method(attribute) do |*arg|
         unless arg.first

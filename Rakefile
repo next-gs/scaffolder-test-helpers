@@ -19,7 +19,7 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "scaffolder-test-helpers"
-  gem.homepage = "http://github.com/michaelbarton/scaffolder-test-helpers"
+  gem.homepage = "http://next.gs"
   gem.license = "MIT"
   gem.summary = %Q{Methods and classes for testing scaffolder.}
   gem.description = %Q{Useful Helper methods and classes for testing scaffolder.}
