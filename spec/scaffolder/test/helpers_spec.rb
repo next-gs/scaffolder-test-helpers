@@ -10,14 +10,14 @@ describe Scaffolder::Test::Helpers, "#generate_scaffold_files method" do
     end
 
     it "should create the corresponding scaffold file" do
-      File.exists?(@scaf_file).should be_true
-      scaffold = YAML.load(File.read(@scaf_file))
+      File.exists?(@scaf_file.path).should be_true
+      scaffold = YAML.load(File.read(@scaf_file.path))
       scaffold.should == [{'sequence' => {'source' => 'c1'}}]
     end
 
     it "should create the corresponding sequence file" do
-      File.exists?(@seq_file).should be_true
-      sequence = File.read(@seq_file)
+      File.exists?(@seq_file.path).should be_true
+      sequence = File.read(@seq_file.path)
       sequence.should == ">c1\nATG\n"
     end
 
@@ -32,15 +32,15 @@ describe Scaffolder::Test::Helpers, "#generate_scaffold_files method" do
     end
 
     it "should create the corresponding scaffold file" do
-      File.exists?(@scaf_file).should be_true
-      scaffold = YAML.load(File.read(@scaf_file))
+      File.exists?(@scaf_file.path).should be_true
+      scaffold = YAML.load(File.read(@scaf_file.path))
       scaffold.should == [{'sequence' => {'source' => 'c1'}},
         {'sequence' => {'source' => 'c2'}}]
     end
 
     it "should create the corresponding sequence file" do
-      File.exists?(@seq_file).should be_true
-      sequence = File.read(@seq_file)
+      File.exists?(@seq_file.path).should be_true
+      sequence = File.read(@seq_file.path)
       sequence.should == ">c1\nATG\n>c2\nATG\n"
     end
 
@@ -55,15 +55,15 @@ describe Scaffolder::Test::Helpers, "#generate_scaffold_files method" do
     end
 
     it "should create the corresponding scaffold file" do
-      File.exists?(@scaf_file).should be_true
-      scaffold = YAML.load(File.read(@scaf_file))
+      File.exists?(@scaf_file.path).should be_true
+      scaffold = YAML.load(File.read(@scaf_file.path))
       scaffold.should == [{'sequence' => {'source' => 'c1'}},
         {'unresolved' => {'length' => 5}}]
     end
 
     it "should create the corresponding sequence file" do
-      File.exists?(@seq_file).should be_true
-      sequence = File.read(@seq_file)
+      File.exists?(@seq_file.path).should be_true
+      sequence = File.read(@seq_file.path)
       sequence.should == ">c1\nATG\n"
     end
 
