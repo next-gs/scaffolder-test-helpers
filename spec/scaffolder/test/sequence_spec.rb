@@ -49,4 +49,15 @@ describe Scaffolder::Test::Sequence do
 
   end
 
+  describe "#clone" do
+
+    it "should also duplicate the internal options state" do
+      a = described_class.new(:name => 'contig1',:sequence => 'ATGCCC')
+      b = a.clone
+
+      a.instance_variable_get("@options").
+        should_not equal(b.instance_variable_get("@options"))
+    end
+
+  end
 end

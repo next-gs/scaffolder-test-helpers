@@ -3,7 +3,6 @@ source "http://rubygems.org"
 group :default do
   gem "bio",        "~> 1.4"
   gem "scaffolder", "~> 0.4"
-  gem "cucumber",   "~> 0.9"
 end
 
 group :development do
