@@ -27,7 +27,7 @@ module Scaffolder::Test
       if @options[:inserts]
         hash['inserts'] = Array.new
         @options[:inserts].each_with_index do |insert,i|
-          hash['inserts'] = {'source' => "insert#{i+1}"}.merge stringify_keys(insert)
+          hash['inserts'] << {'source' => "insert#{i+1}"}.merge(stringify_keys(insert))
         end
       end
       {'sequence' => hash}
