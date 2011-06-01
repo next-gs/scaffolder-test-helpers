@@ -23,15 +23,11 @@ module Scaffolder::Test
     end
 
     def to_hash
-      hash = {'source' => name}
-      hash.merge! stringify_hash_keys([:start,:stop,:reverse],@options)
-
+      hash = {'source' => name}.merge stringify_keys(@options)
       if @options[:inserts]
         hash['inserts'] = Array.new
         @options[:inserts].each_with_index do |insert,i|
-          insert_hash = {'source' => "insert#{i+1}"}
-          insert_hash.merge! stringify_hash_keys([:open,:close,:reverse],insert)
-          hash['inserts'] << insert_hash
+          hash['inserts'] = {'source' => "insert#{i+1}"}.merge stringify_keys(insert)
         end
       end
       {'sequence' => hash}
@@ -47,8 +43,8 @@ module Scaffolder::Test
 
     private
 
-    def stringify_hash_keys(keys,hash)
-      keys.inject(Hash.new) do |stringified,key|
+    def stringify_keys(hash)
+      [:start,:stop,:reverse,:open,:close].inject(Hash.new) do |stringified,key|
         stringified[key.to_s] = hash[key] if hash[key]
         stringified
       end
