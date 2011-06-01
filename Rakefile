@@ -25,6 +25,7 @@ Jeweler::Tasks.new do |gem|
   gem.description = %Q{Useful Helper methods and classes for testing scaffolder.}
   gem.email = "mail@michaelbarton.me.uk"
   gem.authors = ["Michael Barton"]
+  gem.test_files = Dir['spec/**/*.rb']
 end
 Jeweler::RubygemsDotOrgTasks.new
 
