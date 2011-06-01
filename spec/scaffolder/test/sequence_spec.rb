@@ -14,6 +14,26 @@ describe Scaffolder::Test::Sequence do
     its(:to_hash) {should == {'sequence' => {'source' => 'contig1'}} }
   end
 
+  describe "with an insert" do
+
+    describe "added as a hash at initialisation" do
+
+      subject do
+        described_class.new(:name => 'contig1',:sequence => 'ATGCCC',:inserts =>[{
+          :open => 3, :close => 4, :sequence => 'TTT'}])
+      end
+
+      its(:name)    {should == 'contig1'}
+      its(:sequence){should == 'ATGCCC'}
+
+      its(:to_fasta){should == ">contig1\nATGCCC\n>insert1\nTTT"}
+      its(:to_hash) {should == {'sequence' => {'source' => 'contig1','inserts' => [{
+        'open' => 3, 'close' => 4, 'source' => 'insert1'}]}} }
+
+    end
+
+  end
+
   [:start,:stop,:reverse].each do |attribute|
 
     describe "instance with #{attribute} attribute" do

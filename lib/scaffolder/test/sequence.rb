@@ -12,7 +12,7 @@ module Scaffolder::Test
       @options = @options.dup
     end
 
-    [:name,:sequence,:reverse,:start,:stop].each do |attribute|
+    [:name,:sequence,:reverse,:start,:stop,:inserts].each do |attribute|
       define_method(attribute) do |*arg|
         unless arg.first
           return @options[attribute]
@@ -27,11 +27,22 @@ module Scaffolder::Test
       [:start,:stop,:reverse].each do |attribute|
         hash[attribute.to_s] = @options[attribute] if @options[attribute]
       end
+      if @options[:inserts]
+        hash['inserts'] = Array.new
+        @options[:inserts].each_with_index do |insert,i|
+          hash['inserts'] << {'open' => insert[:open], 'close' => insert[:close],
+            'source' => "insert#{i+1}"}
+        end
+      end
       {'sequence' => hash}
     end
 
     def to_fasta
-      Bio::Sequence.new(sequence).output(:fasta,:header => name).strip
+      fasta = Bio::Sequence.new(sequence).output(:fasta,:header => name)
+      inserts.each_with_index do |insert,i|
+        fasta << Bio::Sequence.new(insert[:sequence]).output(:fasta,:header => "insert#{i+1}")
+      end if inserts
+      fasta.strip
     end
 
   end
