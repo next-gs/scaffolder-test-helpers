@@ -24,9 +24,8 @@ module Scaffolder::Test
 
     def to_hash
       hash = {'source' => name}
-      [:start,:stop,:reverse].each do |attribute|
-        hash[attribute.to_s] = @options[attribute] if @options[attribute]
-      end
+      hash.merge! stringify_hash_keys([:start,:stop,:reverse],@options)
+
       if @options[:inserts]
         hash['inserts'] = Array.new
         @options[:inserts].each_with_index do |insert,i|
@@ -43,6 +42,15 @@ module Scaffolder::Test
         fasta << Bio::Sequence.new(insert[:sequence]).output(:fasta,:header => "insert#{i+1}")
       end if inserts
       fasta.strip
+    end
+
+    private
+
+    def stringify_hash_keys(keys,hash)
+      keys.inject(Hash.new) do |stringified,key|
+        stringified[key.to_s] = hash[key] if hash[key]
+        stringified
+      end
     end
 
   end
