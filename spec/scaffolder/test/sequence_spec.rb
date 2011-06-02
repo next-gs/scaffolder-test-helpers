@@ -32,6 +32,53 @@ describe Scaffolder::Test::Sequence do
 
     end
 
+    describe "added singularly to an existing contig" do
+
+      subject do
+        contig = described_class.new(:name => 'contig1',:sequence => 'ATGCCC')
+        contig.inserts({:open => 3, :close => 4, :sequence => 'TTT'})
+      end
+
+      its(:name)    {should == 'contig1'}
+      its(:sequence){should == 'ATGCCC'}
+
+      its(:to_fasta){should == ">contig1\nATGCCC\n>insert1\nTTT"}
+      its(:to_hash) {should == {'sequence' => {'source' => 'contig1','inserts' => [{
+        'open' => 3, 'close' => 4, 'source' => 'insert1'}]}} }
+
+    end
+
+    describe "added singularly to an existing contig" do
+
+      subject do
+        contig = described_class.new(:name => 'contig1',:sequence => 'ATGCCC')
+        contig.inserts({:open => 3, :close => 4, :sequence => 'TTT'})
+      end
+
+      its(:name)    {should == 'contig1'}
+      its(:sequence){should == 'ATGCCC'}
+
+      its(:to_fasta){should == ">contig1\nATGCCC\n>insert1\nTTT"}
+      its(:to_hash) {should == {'sequence' => {'source' => 'contig1','inserts' => [{
+        'open' => 3, 'close' => 4, 'source' => 'insert1'}]}} }
+
+    end
+
+    describe "added as an array to an existing contig" do
+
+      subject do
+        contig = described_class.new(:name => 'contig1',:sequence => 'ATGCCC')
+        contig.inserts([{:open => 3, :close => 4, :sequence => 'TTT'}])
+      end
+
+      its(:name)    {should == 'contig1'}
+      its(:sequence){should == 'ATGCCC'}
+
+      its(:to_fasta){should == ">contig1\nATGCCC\n>insert1\nTTT"}
+      its(:to_hash) {should == {'sequence' => {'source' => 'contig1','inserts' => [{
+        'open' => 3, 'close' => 4, 'source' => 'insert1'}]}} }
+
+    end
   end
 
   [:start,:stop,:reverse].each do |attribute|

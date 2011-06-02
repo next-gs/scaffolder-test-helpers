@@ -24,7 +24,7 @@ module Scaffolder::Test
 
     def inserts(arg = nil)
       return @options[:inserts] if arg.nil?
-      @options[:inserts] = [arg]
+      @options[:inserts] = (arg.instance_of?(Array) ? arg : [arg])
       return self
     end
 
