@@ -22,16 +22,43 @@ module Scaffolder::Test
       end
     end
 
+    def inserts(arg = nil)
+      return @options[:inserts] if arg.nil?
+      @options[:inserts] ||= Array.new
+      if arg.instance_of?(Array)
+       arg.each {|a| @options[:inserts] << a}
+      else
+        @options[:inserts] << arg
+      end
+      return self
+    end
+
     def to_hash
-      hash = {'source' => name}
-      [:start,:stop,:reverse].each do |attribute|
-        hash[attribute.to_s] = @options[attribute] if @options[attribute]
+      hash = {'source' => name}.merge stringify_keys(@options)
+      if @options[:inserts]
+        hash['inserts'] = Array.new
+        @options[:inserts].each_with_index do |insert,i|
+          hash['inserts'] << {'source' => "insert#{i+1}"}.merge(stringify_keys(insert))
+        end
       end
       {'sequence' => hash}
     end
 
     def to_fasta
-      Bio::Sequence.new(sequence).output(:fasta,:header => name).strip
+      fasta = Bio::Sequence.new(sequence).output(:fasta,:header => name)
+      inserts.each_with_index do |insert,i|
+        fasta << Bio::Sequence.new(insert[:sequence]).output(:fasta,:header => "insert#{i+1}")
+      end if inserts
+      fasta.strip
+    end
+
+    private
+
+    def stringify_keys(hash)
+      [:start,:stop,:reverse,:open,:close].inject(Hash.new) do |stringified,key|
+        stringified[key.to_s] = hash[key] if hash[key]
+        stringified
+      end
     end
 
   end
