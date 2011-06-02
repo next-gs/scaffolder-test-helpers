@@ -12,7 +12,7 @@ module Scaffolder::Test
       @options = @options.dup
     end
 
-    [:name,:sequence,:reverse,:start,:stop,:inserts].each do |attribute|
+    [:name,:sequence,:reverse,:start,:stop].each do |attribute|
       define_method(attribute) do |*arg|
         unless arg.first
           return @options[attribute]
@@ -20,6 +20,12 @@ module Scaffolder::Test
         @options[attribute] = arg.first
         return self
       end
+    end
+
+    def inserts(arg = nil)
+      return @options[:inserts] if arg.nil?
+      @options[:inserts] = [arg]
+      return self
     end
 
     def to_hash
