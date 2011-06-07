@@ -4,6 +4,7 @@ require 'scaffolder'
 
 require 'scaffolder/test/sequence'
 require 'scaffolder/test/unresolved'
+require 'scaffolder/test/annotation'
 
 module Scaffolder::Test
   module Helpers
@@ -28,6 +29,12 @@ module Scaffolder::Test
       file
     end
 
+    def generate_gff3_file(records,file = Tempfile.new("gff"))
+      gff = Bio::GFF::GFF3.new
+      gff.records = records.map{|r| r.to_gff3_record}
+      File.open(file.path,'w'){|out| out.print(gff) }
+      file
+    end
 
   end
 end
