@@ -73,4 +73,26 @@ describe Scaffolder::Test::Helpers, "#generate_scaffold_files method" do
 
   end
 
+  describe "#generate_gff3_file" do
+
+    subject do
+      described_class.generate_gff3_file(records)
+    end
+
+    context "passed an empty array" do
+
+      let(:records){ [] }
+
+      it "should create a file" do
+        File.exists?(subject.path).should be_true
+      end
+
+      it "should generate an empty gff3 file" do
+        File.read(subject.path).should == "##gff-version 3\n"
+      end
+
+    end
+
+  end
+
 end

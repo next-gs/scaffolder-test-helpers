@@ -28,6 +28,12 @@ module Scaffolder::Test
       file
     end
 
+    def generate_gff3_file(records,file = Tempfile.new("gff"))
+      File.open(file.path,'w') do |out|
+        out.puts "##gff-version 3"
+      end
+      file
+    end
 
   end
 end
