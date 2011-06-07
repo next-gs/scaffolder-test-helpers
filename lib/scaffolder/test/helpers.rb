@@ -4,6 +4,7 @@ require 'scaffolder'
 
 require 'scaffolder/test/sequence'
 require 'scaffolder/test/unresolved'
+require 'scaffolder/test/annotation'
 
 module Scaffolder::Test
   module Helpers

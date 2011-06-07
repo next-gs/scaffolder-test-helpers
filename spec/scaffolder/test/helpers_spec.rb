@@ -93,6 +93,22 @@ describe Scaffolder::Test::Helpers, "#generate_scaffold_files method" do
 
     end
 
+    context "passed an array with a single record" do
+
+      let(:records){ [Annotation.new(
+        :seqname => 'c1', :start => 4, :end => 6, :strand => '+',:phase => 1)] }
+
+      it "should create a file" do
+        File.exists?(subject.path).should be_true
+      end
+
+      it "should generate an empty gff3 file" do
+        record = "c1\t.\tCDS\t4\t6\t.\t+\t1\n"
+        File.read(subject.path).should == "##gff-version 3\n" + record
+      end
+
+    end
+
   end
 
 end
