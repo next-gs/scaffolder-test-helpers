@@ -103,7 +103,7 @@ describe Scaffolder::Test::Helpers, "#generate_scaffold_files method" do
       end
 
       it "should generate an empty gff3 file" do
-        record = "c1\t.\tCDS\t4\t6\t.\t+\t1\n"
+        record = "c1\t.\tCDS\t4\t6\t.\t+\t1\t.\n"
         File.read(subject.path).should == "##gff-version 3\n" + record
       end
 

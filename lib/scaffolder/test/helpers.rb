@@ -30,9 +30,9 @@ module Scaffolder::Test
     end
 
     def generate_gff3_file(records,file = Tempfile.new("gff"))
-      File.open(file.path,'w') do |out|
-        out.puts "##gff-version 3"
-      end
+      gff = Bio::GFF::GFF3.new
+      gff.records = records.map{|r| r.to_gff3_record}
+      File.open(file.path,'w'){|out| out.print(gff) }
       file
     end
 
