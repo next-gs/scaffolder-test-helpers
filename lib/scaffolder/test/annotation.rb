@@ -19,5 +19,11 @@ module Scaffolder::Test
       @options = defaults.merge(options)
     end
 
+    def to_gff3_record
+      Bio::GFF::GFF3::Record.new(
+        self.seqname, nil, self.feature, self.start,
+        self.end,     nil, self.strand,  self.phase)
+    end
+
   end
 end

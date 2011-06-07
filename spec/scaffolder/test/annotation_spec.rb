@@ -34,4 +34,19 @@ describe Scaffolder::Test::Annotation do
 
   end
 
+  describe "#to_gff3_record" do
+
+      subject do
+        described_class.new.to_gff3_record
+      end
+
+      it "should generate a Bio::GFF::GFF3::Record" do
+        expected = Bio::GFF::GFF3::Record.new(
+          subject.seqname, nil, subject.feature, subject.start,
+          subject.end,     nil, subject.strand,  subject.phase)
+        subject.should == expected
+      end
+
+  end
+
 end
