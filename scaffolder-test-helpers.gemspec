@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{scaffolder-test-helpers}
-  s.version = "0.3.0"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michael Barton"]
-  s.date = %q{2011-06-02}
+  s.date = %q{2011-06-07}
   s.description = %q{Useful Helper methods and classes for testing scaffolder.}
   s.email = %q{mail@michaelbarton.me.uk}
   s.extra_rdoc_files = [
@@ -23,10 +23,12 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "lib/scaffolder/test/annotation.rb",
     "lib/scaffolder/test/helpers.rb",
     "lib/scaffolder/test/sequence.rb",
     "lib/scaffolder/test/unresolved.rb",
     "scaffolder-test-helpers.gemspec",
+    "spec/scaffolder/test/annotation_spec.rb",
     "spec/scaffolder/test/helpers_spec.rb",
     "spec/scaffolder/test/sequence_spec.rb",
     "spec/scaffolder/test/unresolved_spec.rb",
@@ -37,7 +39,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Methods and classes for testing scaffolder.}
-  s.test_files = ["spec/scaffolder/test/helpers_spec.rb", "spec/scaffolder/test/sequence_spec.rb", "spec/scaffolder/test/unresolved_spec.rb", "spec/spec_helper.rb"]
+  s.test_files = ["spec/scaffolder/test/annotation_spec.rb", "spec/scaffolder/test/helpers_spec.rb", "spec/scaffolder/test/sequence_spec.rb", "spec/scaffolder/test/unresolved_spec.rb", "spec/spec_helper.rb"]
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
