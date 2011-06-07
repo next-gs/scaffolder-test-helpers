@@ -19,6 +19,11 @@ module Scaffolder::Test
       @options = defaults.merge(options)
     end
 
+    def initialize_copy(source)
+      super
+      @options = @options.dup
+    end
+
     def to_gff3_record
       Bio::GFF::GFF3::Record.new(
         self.seqname, nil, self.feature, self.start,

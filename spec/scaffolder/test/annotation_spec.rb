@@ -49,4 +49,15 @@ describe Scaffolder::Test::Annotation do
 
   end
 
+  describe "#clone" do
+
+    it "should duplicate the internal options state" do
+      a = described_class.new
+      b = a.clone
+
+      a.instance_variable_get("@options").
+        should_not equal(b.instance_variable_get("@options"))
+    end
+
+  end
 end
