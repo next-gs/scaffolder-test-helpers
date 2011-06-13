@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{scaffolder-test-helpers}
-  s.version = "0.4.0"
+  s.version = "0.4.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michael Barton"]
-  s.date = %q{2011-06-07}
+  s.date = %q{2011-06-13}
   s.description = %q{Useful Helper methods and classes for testing scaffolder.}
   s.email = %q{mail@michaelbarton.me.uk}
   s.extra_rdoc_files = [
