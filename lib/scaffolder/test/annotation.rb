@@ -3,7 +3,7 @@ require 'scaffolder'
 module Scaffolder::Test
   class Annotation
 
-    [:seqname,:start,:end,:strand,:phase,:feature].each do |attribute|
+    [:seqname,:start,:end,:strand,:phase,:feature,:attributes].each do |attribute|
       define_method(attribute) do |*arg|
         unless arg.first
           return @options[attribute]
@@ -27,7 +27,8 @@ module Scaffolder::Test
     def to_gff3_record
       Bio::GFF::GFF3::Record.new(
         self.seqname, nil, self.feature, self.start,
-        self.end,     nil, self.strand,  self.phase)
+        self.end,     nil, self.strand,  self.phase,
+        self.attributes.to_a)
     end
 
   end
