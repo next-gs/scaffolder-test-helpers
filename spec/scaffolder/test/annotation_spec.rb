@@ -32,9 +32,19 @@ describe Scaffolder::Test::Annotation do
       its(:feature){should == 'CDS'}
     end
 
+    context "setting gff3 attributes" do
+      subject do
+        described_class.new(:attributes => {:ID => 'gene1'}).attributes
+      end
+
+      its([:ID]){should == 'gene1'}
+    end
+
   end
 
   describe "#to_gff3_record" do
+
+    context "with default parameters" do
 
       subject do
         described_class.new.to_gff3_record
@@ -46,6 +56,24 @@ describe Scaffolder::Test::Annotation do
           subject.end,     nil, subject.strand,  subject.phase)
         subject.should == expected
       end
+
+    end
+
+    context "with attribute parameters set" do
+
+      subject do
+        described_class.new(:attributes => {'ID' => 'gene1'}).to_gff3_record
+      end
+
+      it "should generate a Bio::GFF::GFF3::Record" do
+        subject.attributes.should == [['ID','gene1']]
+      end
+
+      it "should include the attributes correctly in the gff3 string" do
+        subject.to_s.split.last.should == "ID=gene1"
+      end
+
+    end
 
   end
 
