@@ -3,7 +3,7 @@ require 'scaffolder'
 module Scaffolder::Test
   class Annotation
 
-    [:seqname,:start,:end,:strand,:phase,:feature].each do |attribute|
+    [:seqname,:start,:end,:strand,:phase,:feature,:attributes].each do |attribute|
       define_method(attribute) do |*arg|
         unless arg.first
           return @options[attribute]

@@ -32,6 +32,14 @@ describe Scaffolder::Test::Annotation do
       its(:feature){should == 'CDS'}
     end
 
+    context "setting gff3 attributes" do
+      subject do
+        described_class.new(:attributes => {:ID => 'gene1'}).attributes
+      end
+
+      its([:ID]){should == 'gene1'}
+    end
+
   end
 
   describe "#to_gff3_record" do
